@@ -1,0 +1,22 @@
+class Solution {
+    static int fac(int t){
+        if(t<=1){
+            return 1;
+        }
+        return t*fac(t-1);
+    }
+    public boolean isDigitorialPermutation(int n) {
+        int sum=0;
+       int temp=n;
+        while(temp>0){
+            int rem=temp%10;
+            sum+=fac(rem);
+            temp/=10;
+        }
+        char c[]= String.valueOf(n).toCharArray();
+         char d[]= String.valueOf(sum).toCharArray();
+        Arrays.sort(c);
+        Arrays.sort(d);
+        return Arrays.equals(c,d);
+    }
+}
